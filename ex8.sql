@@ -64,7 +64,6 @@ END
 */
 
 /*
-Tip:
 In MySQL server to fire Trigger for Delete, Insert and Update You have to create more than one trigger, 
 but you can move the common code into a procedure and have them all call the procedure.
 
