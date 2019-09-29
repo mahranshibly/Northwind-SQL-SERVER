@@ -62,3 +62,11 @@ END
  To update the field "TotalAmountAfterDiscount" with the func-returned-value,  
  and just in one record from the "Orders" table (with the same "OrderID"). 
 */
+
+/*
+Tip:
+In MySQL server to fire Trigger for Delete, Insert and Update You have to create more than one trigger, 
+but you can move the common code into a procedure and have them all call the procedure.
+
+https://stackoverflow.com/questions/1318224/mysql-fire-trigger-for-both-insert-and-update
+*/
