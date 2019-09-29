@@ -2,8 +2,7 @@
 
 ## EX1.
 
-כתוב שאילתה המחזירה רשימה של כל ההזמנות שבוצעו על ידי לקוחות מגרמניה ועל ידי עובד בשם
- "Suyama"
+"Suyama" כתוב שאילתה המחזירה רשימה של כל ההזמנות שבוצעו על ידי לקוחות מגרמניה ועל ידי עובד בשם 
 הרשימה תציג את מספר הלקוח, שם לקוח, ומספר הזמנה ,ממוין על פי מספר הזמנה
 
 ## EX2.
@@ -33,18 +32,12 @@
 
 ## EX7.
 
-הוסף שדה
-"TotalAmountAfterDiscount"
-בטבלת 
-Orders
+Orders בטבלת "TotalAmountAfterDiscount" הוסף שדה 
 
 ## EX8.
 
-צור טריגר בטבלת 
-Order Details 
-שמעדכן את השדה 
-"TotalAmountAfterDiscount"
-בטבלת 
-Orders
-לאחר כל שינוי בטבלת
-Order Details
+Order Details לאחר כל שינוי בטבלת Orders בטבלת "TotalAmountAfterDiscount" שמעדכן את השדה Order Details צור טריגר בטבלת 
+ 
+ 
+
+##בהצלחה
