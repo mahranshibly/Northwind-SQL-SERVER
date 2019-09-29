@@ -29,6 +29,7 @@ INNER JOIN Products AS p
 ON p.ProductID = od.ProductID
 
 GROUP BY o.CustomerID, p.ProductID, c.CompanyName, p.ProductName
+-- GROUP BY o.CustomerID, p.ProductID  -- /*only on MySQL server*/
 
 ORDER BY CustomerName, ProductName;
 
@@ -36,13 +37,14 @@ ORDER BY CustomerName, ProductName;
  more info...
  SQL SERVER ERROR : "Column 'c.CompanyName, p.ProductName' is invalid in the select list because
  it is not contained in either an aggregate function or the GROUP BY clause."  
- 
+ >>>
  I got this error when I tried to group by customer/product -id only, in MSSM-Studio (SQL Server).
- 
  but in MySQL-Workbench-Northwind" I didn't got any errors, and I got the same list as expected.
  with less syntax... "GROUP BY o.CustomerID, p.ProductID" only.
- 
+ >>>
  so just to be sure that you will not have any syntax errors
- in case if you we don't have the same ver. of (SQL/MySQL Server)
- finally... "GROUP BY o.CustomerID, p.ProductID, c.CompanyName, p.ProductName" the ans for both servers (SQL & MySQL) 
+ in case if you we don't have the same ver. of (SQL or MySQL Server)
+ finally... the ans for both servers:
+ "GROUP BY o.CustomerID, p.ProductID, c.CompanyName, p.ProductName"
+ both queries will execute the same list as expected (SQL & MySQL).
 */
