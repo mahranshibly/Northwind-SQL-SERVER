@@ -8,8 +8,7 @@ GO
 -- Ex 7
 -- SQL query adds a column "TotalAmountAfterDiscount" to the "Orders" table.
  
--- my impl. >>> Column data-type : DECIMAL
-
+-- Column data-type : DECIMAL
 
 ALTER TABLE Orders 
 ADD TotalAmountAfterDiscount DECIMAL(10, 2);
