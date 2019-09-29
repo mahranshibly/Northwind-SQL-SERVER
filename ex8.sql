@@ -8,22 +8,11 @@ GO
 -- Ctreate a trigger on "OrderDetails" table for updating the field 
 -- "TotalAmountAfterDiscount" in the "Orders" table.
 
-/*
-
- my ans: 
- I call my scalar-function (Ex-6) from the trigger statement,
- with the specific "OrderID" as func-args, via the changes in the "OrderDetails" 
- table; by selecting the @OrderID from the inserted/deleted tables.
- To update the field "TotalAmountAfterDiscount" with the func-returned-value,  
- and just in one record from the "Orders" table (with the same "OrderID"). 
-
-*/
 
 CREATE TRIGGER TotalAmountAfterDiscount_trigger 
 ON OrderDetails
 AFTER UPDATE, INSERT, DELETE
 AS
-
 DECLARE @order_id INT
 
 IF exists(SELECT * FROM inserted)
@@ -35,7 +24,7 @@ IF exists(SELECT * FROM inserted)
 		-- calc all records with the same "OrderID" in "OrderDetails" table.
 		UPDATE Orders 
 		SET TotalAmountAfterDiscount = 
-		( Select dbo.Ex6_ScalarFunc(@order_id) )
+			( Select dbo.Ex6_ScalarFunc(@order_id) )
 		WHERE OrderID = @order_id;
 	END
 	
@@ -51,7 +40,7 @@ IF NOT exists(SELECT * FROM inserted) AND exists(SELECT * FROM deleted)
 		IF exists(SELECT * FROM OrderDetails WHERE OrderID = @order_id)
 				UPDATE Orders 
 				SET TotalAmountAfterDiscount = 
-				( Select dbo.Ex6_ScalarFunc(@order_id) )
+					( Select dbo.Ex6_ScalarFunc(@order_id) )
 				WHERE OrderID = @order_id;
 
 		-- else, if its no other records in "OrderDetails" with the same "OrderID"		
@@ -64,3 +53,12 @@ IF NOT exists(SELECT * FROM inserted) AND exists(SELECT * FROM deleted)
 			SET TotalAmountAfterDiscount = 0.0 
 			WHERE OrderID = @order_id;
 END
+
+/*
+ more info: 
+ I call my scalar-function (Ex-6) from the trigger statement,
+ with the specific "OrderID" as func-args, via the changes in the "OrderDetails" 
+ table; by selecting the @OrderID from the inserted/deleted tables.
+ To update the field "TotalAmountAfterDiscount" with the func-returned-value,  
+ and just in one record from the "Orders" table (with the same "OrderID"). 
+*/
