@@ -29,3 +29,5 @@ BEGIN
 		WHERE OrderID = @order_id
 	);
 END;
+
+-- more-info : "OrderDetails.Discount" all column's values look like 0.xx so its should be XX% discount per order/product
