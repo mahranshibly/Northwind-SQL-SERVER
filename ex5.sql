@@ -22,24 +22,23 @@ CREATE FUNCTION Ex5_ScalarFunc(
 RETURNS DECIMAL(20, 2)
 AS 
 BEGIN
-    RETURN (
+	RETURN (
 		select SUM(Quantity*UnitPrice*(1-Discount)) 
 		from OrderDetails 
 		WHERE OrderID IN (
 			select OrderID From Orders 
 			WHERE CustomerID = @customer_id 
 			AND OrderDate like CONCAT('%',@orders_year,'%')
-			)
-		);
+		)
+	);
 END;
 
 
 /*
 
-  my ans:
-  
+  more info:
   "OrderDetails.Discount" column's records values look like : 0.XX   
-  so..  XX% discount per order.
+  so..  XX% discount per product in a order.
   Quantity * UnitPrice   >>>  as TotalAmountBeforeDiscount.
   Quantity * UnitPrice *  Discount  >>>  as TotalDiscount.
   Quantity * UnitPrice * ( 1 - Discount )  >>>  as TotalAmountAfterDiscount.
