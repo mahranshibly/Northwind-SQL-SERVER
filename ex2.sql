@@ -27,7 +27,7 @@ ON o.EmployeeID = e.EmployeeID
 GROUP BY o.EmployeeID, e.FirstName, e.LastName;
 
 /*
- SQL SERVER ERORR : "Column 'e.FirstName/e.LastName' is invalid in the select list because
+ SQL SERVER ERROR : "Column 'e.FirstName/e.LastName' is invalid in the select list because
  it is not contained in either an aggregate function or the GROUP BY clause." 
  
  I got this when I tried to group only by id "GROUP BY o.EmployeeID" in MSSM (SQL Server).
