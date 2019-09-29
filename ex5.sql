@@ -13,7 +13,12 @@ GO
 
 -- PARAMS : @customer_id VARCHAR(5) >>> Orders.CustomerID (FK,NCHAR(5),null)
 -- PARAMS : @orders_year VARCHAR(4) >>>  4 chars, yyyy% format.			
+
 -- RETURNS : DECIMAL(10, 2)
+
+-- PARAM : @orders_year VARCHAR(4) can have type DATETIME, 
+-- with "almost" same simple impl. as in this file.
+-- thanks.
 
 CREATE FUNCTION Ex5_ScalarFunc(
 	@customer_id VARCHAR(5),
@@ -32,23 +37,3 @@ BEGIN
 		)
 	);
 END;
-
-
-/*
-
-  more info:
-  1.
-  I thought the discount field is a value (not as precents %) per price)
-   explain :
-  "OrderDetails.Discount" all column's values look like 0.xx so its should be XX% discount per order/product
-  
-  Quantity * UnitPrice * ( 1 - Discount )  >>>  as TotalAmountAfterDiscount.
-  #NOT :
-  Quantity * (UnitPrice - Discount )  >>>  as TotalAmountAfterDiscount.
-  
-  2. 
-  PARAM : @orders_year VARCHAR(4) can have type DATETIME, 
-  function with "almost" same simple impl. as in this file.
-  
-  thanks.
-*/
