@@ -4,10 +4,17 @@
 -- EX 4
 -- Write a query that returns a matrix that will show 
 -- for each customer and for each year, the number of orders each month.
--- The list will include customer number, year, number of orders in month 1,
+-- The list will include customer number (id), year, number of orders in month 1,
 -- number of orders in month 2, and so on until 12, and total orders throughout the year.
--- The should be list sorted by customer name(number) and year.
+-- The should be list sorted by customer name and year.
 
+-- just to be clear...
+-- The list should be sorted by customer name and year!!!
+-- but the name not selected!!! or I should select it also? or maybe sorted by name without selesct it.
+-- so here i just select the id as customer and sorted by id.
+-- another ver of ex4 with list sorted by customer name as requer in the question! 
+-- with/without select it (by optional select-row-code by comment chars).
+-- thanks. 
 SELECT	
 	(CASE WHEN t.CustomerID IS NULL THEN '_All-Customers_' ELSE t.CustomerID END) AS Customer,
 	(CASE WHEN t.yyyyFormat IS NULL THEN 'All-Years' ELSE t.yyyyFormat END) AS OrdersYear,
