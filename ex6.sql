@@ -23,7 +23,7 @@ CREATE FUNCTION Ex6_ScalarFunc(
 RETURNS DECIMAL(10, 2)
 AS 
 BEGIN
-    RETURN (
+    	RETURN (
 		select SUM(Quantity*UnitPrice*(1-Discount)) 
 		from OrderDetails 
 		WHERE OrderID = @order_id
@@ -39,8 +39,7 @@ END;
   Quantity * UnitPrice *  Discount  >>>  as TotalDiscount.
   Quantity * UnitPrice * ( 1 - Discount )  >>>  as TotalAmountAfterDiscount.
  
-  
-  NOT !!!...
+  Wrong impl. in my interview!!!...
   Quantity *  Discount  >>>  as TotalDiscount. 
   Quantity * (UnitPrice - Discount )  >>>  as TotalAmountAfterDiscount.
 */
