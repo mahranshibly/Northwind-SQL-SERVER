@@ -29,17 +29,3 @@ BEGIN
 		WHERE OrderID = @order_id
 	);
 END;
-
-
-/*
-  more info...
-  "OrderDetails.Discount" column's records values look like : 0.XX   
-  so..  XX% discount per order.
-  Quantity * UnitPrice   >>>  as TotalAmountBeforeDiscount.
-  Quantity * UnitPrice *  Discount  >>>  as TotalDiscount.
-  Quantity * UnitPrice * ( 1 - Discount )  >>>  as TotalAmountAfterDiscount.
- 
-  Wrong impl. in my interview!!!...
-  Quantity *  Discount  >>>  as TotalDiscount. 
-  Quantity * (UnitPrice - Discount )  >>>  as TotalAmountAfterDiscount.
-*/
