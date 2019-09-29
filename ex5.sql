@@ -39,11 +39,10 @@ END;
   more info:
   1.
   What I did in the interview it wasnt correct.
-  I thought the discount field is a value (not as presents) per price)
-  so..  XX% discount per order/product
-  explain :
-  "OrderDetails.Discount" column's records values look like : 0.XX   
-  
+  I thought the discount field is a value (not as precents %) per price)
+   explain :
+  "OrderDetails.Discount" all column's values look like 0.xx so its should be XX% discount per order/product
+   
   Quantity * UnitPrice   >>>  as TotalAmountBeforeDiscount.
   Quantity * UnitPrice *  Discount  >>>  as TotalDiscount.
   Quantity * UnitPrice * ( 1 - Discount )  >>>  as TotalAmountAfterDiscount.
@@ -51,10 +50,10 @@ END;
   #NOT :
   Quantity *  Discount  >>>  as TotalDiscount. 
   Quantity * (UnitPrice - Discount )  >>>  as TotalAmountAfterDiscount.
-
-
+  
   2. 
-  PARAM : @orders_year VARCHAR(4) can have type DATETIME with "almost" same simple impl..
+  PARAM : @orders_year VARCHAR(4) can have type DATETIME, 
+  function with "almost" same simple impl. as in this file.
   
   thanks.
 */
