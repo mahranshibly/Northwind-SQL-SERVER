@@ -12,10 +12,10 @@
 */
 
 SELECT	o.CustomerID, c.CompanyName AS CustomerName, p.ProductName,
-		SUM( od.Quantity * od.UnitPrice ) AS TotalAmountBeforDiscount , 
-		SUM( od.Quantity*od.UnitPrice*od.Discount) AS TotalDiscount ,
-		SUM( od.Quantity*od.UnitPrice*(1-od.Discount) ) AS TotalAmountAfterDiscount,
-		COUNT(*) OrdersCount
+	SUM( od.Quantity * od.UnitPrice ) AS TotalAmountBeforDiscount , 
+	SUM( od.Quantity*od.UnitPrice*od.Discount) AS TotalDiscount ,
+	SUM( od.Quantity*od.UnitPrice*(1-od.Discount) ) AS TotalAmountAfterDiscount,
+	COUNT(*) OrdersCount
 
 FROM Orders AS o
 
@@ -33,10 +33,16 @@ GROUP BY o.CustomerID, p.ProductID, c.CompanyName, p.ProductName
 ORDER BY CustomerName, ProductName;
 
 /*
+ more info...
  SQL SERVER ERROR : "Column 'c.CompanyName, p.ProductName' is invalid in the select list because
  it is not contained in either an aggregate function or the GROUP BY clause."  
- I got this when I tried to group only by customer/product -id in MSSM (SQL Server).
- but in MySQL "Workbench-northwind" I didn't got any error, and I got the same list as expected.
  
- so just to be sure that you will not have syntax errors in case if you we don't have the same ver. of (SQL Server)  
+ I got this error when I tried to group by customer/product -id only, in MSSM-Studio (SQL Server).
+ 
+ but in MySQL-Workbench-Northwind" I didn't got any errors, and I got the same list as expected.
+ with less syntax... "GROUP BY o.CustomerID, p.ProductID" only.
+ 
+ so just to be sure that you will not have any syntax errors
+ in case if you we don't have the same ver. of (SQL/MySQL Server)
+ finally... "GROUP BY o.CustomerID, p.ProductID, c.CompanyName, p.ProductName" the ans for both servers (SQL & MySQL) 
 */
