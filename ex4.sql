@@ -7,12 +7,14 @@
 -- The list will include customer number, year, number of orders in month 1,
 -- number of orders in month 2, and so on until 12, and total orders throughout the year.
 -- The should be list sorted by customer name and year 
--- (name ? with/without selecting it).
+
+-- "list will include customer number, year,..." ... "sorted by customer name..." 
+-- I didnt sure if with/without selecting it?. (so its optional code-row)
 
 SELECT	
 	(CASE WHEN t.CustomerID IS NULL THEN '_All-Customers_' ELSE t.CustomerID END) AS CustomerID ,
 	--(CASE WHEN c.CompanyName IS NULL THEN '_All-Customers_' ELSE c.CompanyName END) AS CustomerName , 
-	-- ^^^ optional row-code (tested no exp.), to select CustomerName.
+	-- ^^^ optional row hide by comment (tested no exp.), to select CustomerName.
 	(CASE WHEN t.yyyyFormat IS NULL THEN 'All-Years' ELSE t.yyyyFormat END) OrdersYear,
 	SUM(CASE WHEN t.mmFormat = 01 THEN t.OrdersCount ELSE 0 END) AS Jan,
         SUM(CASE WHEN t.mmFormat = 02 THEN t.OrdersCount ELSE 0 END) AS Feb,
@@ -45,11 +47,11 @@ GROUP BY t.CustomerID, c.CompanyName, t.yyyyFormat WITH ROLLUP
 
 HAVING
 c.CompanyName IS NOT NULL  -- to remove all nulls or duplicated records (joining tabels).
-OR t.CustomerID IS NULL    -- my extra: to show all-customers  at all-years orders-count per month as first row. 
+OR t.CustomerID IS NULL    -- my extra: to show orders-count per all-customers at all-years per month as first row. 
 
-ORDER BY c.CompanyName, OrdersYear; -- a list sorted by customer name and year!!!
+ORDER BY c.CompanyName, OrdersYear; -- a list sorted by customer name and year!!! also if customer name not selected
 
--- I wish my extra is clear...
+-- more info...
 -- the t.CustomerID is NULL just in one case, by grouping all orders as null-id (all), 
 -- and null-year (all) and valid month (not null), in this way we can get one more record(full row) in the list,
 -- counting the orders per month for All-Customers at All-Years!!! as totals per month, very nice :)
