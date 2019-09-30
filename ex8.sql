@@ -15,7 +15,7 @@ AFTER UPDATE, INSERT, DELETE -- trigger events
 AS
 DECLARE @order_id INT -- var, type int
 IF EXISTS (SELECT * FROM inserted) 
-	-- event : 'INSERT' or 'UPDATE' , "OrderDetails" table.
+	-- event : 'INSERT' or 'UPDATE' row, in "OrderDetails" table.
 	BEGIN		
 		SELECT @order_id = OrderID FROM inserted; -- init var with the "OrderID" of the inserted-record.   
 		
@@ -28,7 +28,7 @@ IF EXISTS (SELECT * FROM inserted)
 	END
 	
 IF NOT EXISTS (SELECT * FROM inserted) AND EXISTS (SELECT * FROM deleted)  
-	--==-- event: 'DELETED', "OrderDetails" table.
+	--==-- event: 'DELETED' row only, in "OrderDetails" table.
 	BEGIN 
 		
 		SELECT @order_id = OrderID FROM deleted; -- init var with the "OrderID" of the deleted-record.
