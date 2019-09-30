@@ -1,3 +1,4 @@
+
 -- created by Mahran Shibly, 29/9/2019
 
 -- Ex 2
@@ -23,24 +24,12 @@ FROM Orders AS o
 INNER JOIN Employees AS e
 ON o.EmployeeID = e.EmployeeID 
 
-GROUP BY o.EmployeeID, e.FirstName, e.LastName; -- // GROUP BY o.EmployeeID (only on MySQL server).
+GROUP BY o.EmployeeID, e.FirstName, e.LastName; -- // GROUP BY o.EmployeeID (no error only on MySQL server).
 
-/*
- -- more info
- SQL SERVER ERROR : "Column 'e.FirstName/e.LastName' is invalid in the select list because
- it is not contained in either an aggregate function or the GROUP BY clause." 
- 
- I got this error when I tried to group only by id "GROUP BY o.EmployeeID" in MSSM-studio (SQL Server).
- Well, it's pretty simple when I think about what GROUP BY does, 
- so I just add 'e.FirstName , e.LastName' to the "GROUP BY" clause.
- But when I execute the same query by group only by id ("GROUP BY o.EmployeeID")
- in "MySQL-Workbench-Northwind" I didn't got any error, and I got the same list as expected.
- */
-
--- So, just to be sure.. I write another query, as ans part B (for MSSM-studio and MySQL-Workbench) 
+-- Just to be sure.. I write another query, as ans part B (for MSSM-studio and MySQL-Workbench) 
 -- to group only by id "GROUP BY o.EmployeeID".
 -- one query for both servers. (SQL/MySQL) 
--- without any errors of First/Last-Name columns.
+-- without any errors of First/Last-Name columns in the group by.
 -- both queries A & B execute the same list (with diff impl.).
 
 -- ANS : B
