@@ -30,7 +30,8 @@ GROUP BY o.EmployeeID, e.FirstName, e.LastName; -- // GROUP BY o.EmployeeID (no 
 -- to group only by id "GROUP BY o.EmployeeID".
 -- one query for both servers. (SQL/MySQL) 
 -- without any errors of First/Last-Name columns in the group by.
--- both queries A & B execute the same list (with diff impl.).
+-- both queries (A & B) execute the same list (with diff impl.).
+
 
 -- ANS : B
 SELECT 	o.EmployeeID , 
@@ -43,7 +44,7 @@ INNER JOIN (
 	SELECT 	EmployeeID , 
 		COUNT(OrderID) AS EmployeeOrders 
 	FROM  Orders
-	GROUP BY EmployeeID -- for MSSM-studio and MySQL-Workbench
+	GROUP BY EmployeeID -- group by id only, for MSSM-studio and MySQL-Workbench.
 ) AS o
 
 ON o.EmployeeID=e.EmployeeID;
