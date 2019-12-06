@@ -1,20 +1,25 @@
-DECLARE @BusinessEntityID as INT;
-DECLARE @BusinessName as NVARCHAR(50);
+
+--* Mahran sh. *--
+
+
+
+DECLARE @EntityID as INT;
+DECLARE @Name as NVARCHAR(50);
  
-DECLARE @BusinessCursor as CURSOR;
+DECLARE @InfoCursor as CURSOR;
  
-SET @BusinessCursor = CURSOR FOR
-SELECT BusinessEntityID, Name
+SET @InfoCursor = CURSOR FOR
+SELECT EntityID, Name
  FROM Sales.Store;
  
-OPEN @BusinessCursor;
-FETCH NEXT FROM @BusinessCursor INTO @BusinessEntityID, @BusinessName;
+OPEN @InfoCursor;
+FETCH NEXT FROM @InfoCursor INTO @EntityID, @Name;
  
 WHILE @@FETCH_STATUS = 0
 BEGIN
- PRINT cast(@BusinessEntityID as VARCHAR (50)) + ' ' + @BusinessName;
- FETCH NEXT FROM @BusinessCursor INTO @BusinessEntityID, @BusinessName;
+ PRINT cast(@EntityID as VARCHAR (50)) + ' ' + @Name;
+ FETCH NEXT FROM @InfoCursor INTO @EntityID, @Name;
 END
  
-CLOSE @BusinessCursor;
-DEALLOCATE @BusinessCursor;
+CLOSE @InfoCursor;
+DEALLOCATE @InfoCursor;
